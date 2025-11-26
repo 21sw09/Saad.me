@@ -45,7 +45,7 @@ const ReviewCard = ({ img, name, url, review }) => {
 
 export default function Testimonial() {
   return (
-    <div className="items-start mt-40 md:mt-35 c-space section-padding">
+    <div id="testimonials" className="items-start mt-40 md:mt-35 c-space section-padding">
       {/* <h2 className="text-heading">Hear From My Clients</h2> */}
       <TitleHeader
         title="What my Clients Say"

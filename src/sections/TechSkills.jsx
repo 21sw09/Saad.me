@@ -34,7 +34,7 @@ const ReviewCard = ({ name, icon }) => {
 
 export default function TechSkills() {
   return (
-    <div className="items-start mt-40 md:mt-35 c-space section-padding">
+    <div id="skills" className="items-start mt-40 md:mt-35 c-space section-padding">
       {/* <h2 className="text-heading">Hear From My Clients</h2> */}
       <TitleHeader
         title="How I Can Contribute & My Key Skills"

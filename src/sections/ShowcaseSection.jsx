@@ -49,16 +49,13 @@ const AppShowcase = () => {
         <div className="showcaselayout">
           <div ref={rydeRef} className="first-project-wrapper">
             <div className="image-wrapper">
-              <img src="/images/project1.png" alt="Ryde App Interface" />
+              <img src="/images/project-1.png" alt="Ryde App Interface" />
             </div>
             <div className="text-content">
-              <h2>
-                On-Demand Rides Made Simple with a Powerful, User-Friendly App
-                called Ryde
-              </h2>
+              <h2>School Transport Management System</h2>
               <p className="text-white-50 md:text-xl">
-                An app built with React Native, Expo, & TailwindCSS for a fast,
-                user-friendly experience.
+                An app built with Next.js, React Native, Expo, & TailwindCSS for
+                a fast, user-friendly experience.
               </p>
             </div>
           </div>
@@ -66,19 +63,24 @@ const AppShowcase = () => {
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={libraryRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img
-                  src="/images/project2.png"
-                  alt="Library Management Platform"
-                />
+                <img src="/images/project-3.png" alt="Hardware Tools Website" />
               </div>
-              <h2>The Library Management Platform</h2>
+              <h2>
+                <a href="https://www.grinddrill.com">Hardware Tools Website</a>
+              </h2>
             </div>
 
             <div className="project" ref={ycDirectoryRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project3.png" alt="YC Directory App" />
+              <div className="image-wrapper bg-[#407294]">
+                <img
+                  className="rounded-xl border-none outline-none"
+                  src="/images/project-2.png"
+                  alt="EasyKrypt Web3 Banking"
+                />
               </div>
-              <h2>YC Directory - A Startup Showcase App</h2>
+              <h2>
+                <a href="https://easy-krypt.vercel.app">Easy Krypt - A Web3 Banking App</a>
+              </h2>
             </div>
           </div>
         </div>
