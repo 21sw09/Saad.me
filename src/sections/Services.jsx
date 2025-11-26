@@ -28,7 +28,7 @@ const Services = () => {
             No problem click below
           </p>
           <a
-            href="https://wa.me/+923253275624"
+            href="https://wa.me/+447512270510"
             className="w-full"
             target="_blank"
           >

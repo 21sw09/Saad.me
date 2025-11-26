@@ -43,7 +43,7 @@ const NavBar = () => {
           </ul>
         </nav>
 
-        <a href="https://wa.me/+923253275624" target="_blank" className="contact-btn group">
+        <a href="https://wa.me/+447512270510" target="_blank" className="contact-btn group">
           <FaWhatsapp fontSize={24}/>
         </a>
       </div>
