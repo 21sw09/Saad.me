@@ -1,4 +1,3 @@
-
 const navLinks = [
   {
     name: "Work",
@@ -178,29 +177,33 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review:
-      "Saad is very fast hard worker and he accept changes if needed flixable honest reliable and for sure will work again togather thanks bro for the nice experince on fiverr",
-    imgPath: "/images/exp1.png",
     logoPath: "/images/logo1.png",
-    title: "Full Stack Developer",
-    date: "Aug 2023 - Present",
+    title: "Remote Full Stack Developer",
+    company:'Webtors',
+    date: "May 2023 - Jul 2025",
     responsibilities: [
-      "Built a full-stack Chrome extension for using MERN stack and Webpack and deployed it to the google web store.",
-      "Developed a CV generator app that extracts data from LinkedIn URLs using Node.js and Express and Deployed it to vercel and configured domain.",
-      "Built an education app with email integration, RESTful APIs, and backend using Node.js ",
-      "Optimized web applications for maximum speed and scalability.",
+      "Full-stack feature development using React, Next.js, Node.js, and modern backend tools.",
+      "Developed and maintained full-stack architecture using Next.js, React, Node.js (Express), Appwrite, and MongoDB.",
+      "Developed modular and scalable REST APIs, implemented authentication layers (JWT), role-based access, caching, and rate limiting.",
+      "Increased platform stability and usability by delivering 15+ major full-stack features for a SaaS application, resulting in a 30% reduction in production bugs in a SaaS School Transport Management System.",
+      "Implemented real-time vehicle tracking functionality using WebSockets for live map integration across multiple platforms",
+      "Implemented cart and checkout functionality with proper backend in a multi role e-commerce website with coupons",
+      "Built REST APIs, integrated third-party services, and optimized backend performance for high-traffic operations.",
     ],
   },
   {
-    review: "Well done Saad. Lovely working with you.",
-    imgPath: "/images/exp2.png",
     logoPath: "/images/logo2.png",
-    title: "Frontend Developer",
-    date: "June 2023 - December 2023",
+    title: "MERN Full Stack Developer",
+    company:'Fiverr',
+    date: "Feb 2023 - Present",
     responsibilities: [
-      "Converted 15+ Figma designs into responsive React.js websites for Frac.io (Singapore)",
-      "Configured domains and handled multiple applications deployment",
-      "Developed a Single page full stack application for Daimondlabs.",
+      "Successfully completed over 150 projects for 50+ unique clients, maintaining a 100% client retention rate and achieving 5-star rated seller (Level 2) status",
+      "Converted Figma designs into high-quality React.js code.",
+      "Developed an authentication + CRUD full stack mern application for online gaming with teams.",
+      "Developed a live streaming platform with proper authentication and security, which was built on top of livkit, options to credit user using the chat option deposit/withdraw credits with stripe and crypto payments",
+      "Integrated Stripe, EmailJS, and crypto gateways for secure and reliable payment workflows.",
+      "Developed a Chrome Extension, e-commerce functionalities, and custom dashboards.",
+      "Deployed 10+ production apps using Nginx, PM2, and GitHub Actions on DigitalOcean",
     ],
   },
 ];

@@ -31,7 +31,7 @@ const Experience = () => {
           // The card is the trigger element
           trigger: card,
           // Trigger the animation when the card is 80% down the screen
-          start: "top 80%",
+          start: "top 30%",
         },
       });
     });
@@ -50,7 +50,7 @@ const Experience = () => {
       scrollTrigger: {
         trigger: ".timeline",
         start: "top center",
-        end: "70% center",
+        end: "50% center",
         // Update the animation as the user scrolls
         onUpdate: (self) => {
           // Scale the timeline height as the user scrolls
@@ -83,7 +83,7 @@ const Experience = () => {
           // The text is the trigger element
           trigger: text,
           // Trigger the animation when the text is 60% down the screen
-          start: "top 60%",
+          start: "top 30%",
         },
       });
     }, "<"); // position parameter - insert at the start of the animation
@@ -102,13 +102,9 @@ const Experience = () => {
         <div className="mt-32 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
             {expCards.map((card) => (
-              <div key={card.title} className="exp-card-wrapper">
+              <div key={card.title} className={`exp-card-wrapper`}>
                 <div className="xl:w-2/6">
-                  <GlowCard card={card}>
-                    <div>
-                      <img src={card.imgPath} alt="exp-img" />
-                    </div>
-                  </GlowCard>
+                  <GlowCard card={card}/>
                 </div>
                 <div className="xl:w-4/6">
                   <div className="flex items-start">
