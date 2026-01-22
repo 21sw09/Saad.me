@@ -1,8 +1,7 @@
 import { useRef } from "react";
+import { FaStar } from "react-icons/fa";
 import Card from "../components/Card";
 import { Globe } from "../components/globe";
-import CopyEmailButton from "../components/CopyEmailButton";
-import { FaStar } from "react-icons/fa";
 
 const About = () => {
   const grid2Container = useRef();
@@ -14,6 +13,9 @@ const About = () => {
         <div className="flex items-end grid-default-color grid-1">
           <img
             src="assets/coding-pov.png"
+            alt="Coding perspective illustration"
+            loading="lazy"
+            decoding="async"
             className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
           />
 

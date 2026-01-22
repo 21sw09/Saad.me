@@ -1,10 +1,10 @@
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { expCards } from "../constants";
-import TitleHeader from "../components/TitleHeader";
 import GlowCard from "../components/GlowCard";
+import TitleHeader from "../components/TitleHeader";
+import { expCards } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,7 +104,7 @@ const Experience = () => {
             {expCards.map((card) => (
               <div key={card.title} className={`exp-card-wrapper`}>
                 <div className="xl:w-2/6">
-                  <GlowCard card={card}/>
+                  <GlowCard card={card} />
                 </div>
                 <div className="xl:w-4/6">
                   <div className="flex items-start">
@@ -114,7 +114,14 @@ const Experience = () => {
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img src={card.logoPath} alt="logo" />
+                        <img
+                          src={card.logoPath}
+                          alt="company logo"
+                          loading="lazy"
+                          decoding="async"
+                          width={64}
+                          height={64}
+                        />
                       </div>
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>
@@ -130,7 +137,7 @@ const Experience = () => {
                               <li key={index} className="text-lg">
                                 {responsibility}
                               </li>
-                            )
+                            ),
                           )}
                         </ul>
                       </div>

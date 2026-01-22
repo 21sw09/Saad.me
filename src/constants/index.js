@@ -177,9 +177,27 @@ const techStackIcons = [
 
 const expCards = [
   {
+    logoPath: "/images/rayon.png",
+    title: "Full Stack AI Engineer",
+    company: "Rayon Studios",
+    date: "Dec 2025 - Present",
+    responsibilities: [
+      "Developed and maintained scalable full-stack web applications using React, TypeScript, Node.js, Express, and PostgreSQL",
+      "Built responsive, performant UIs resulting in improved user experience and faster load times",
+      "Designed and implemented OpenAPI 3.0–compliant APIs with strongly typed contracts across frontend and backend",
+      "Improved backend security, structure, and reliability through best practices and secure coding standards",
+      "Optimized database queries and application performance to enhance system scalability",
+      "Collaborated cross-functionally with designers and product managers to deliver production-ready features",
+      "Actively participated in code reviews, improving overall code quality and maintainability",
+      "Contributed to CI/CD pipelines and cloud deployments on Google Cloud Platform (GCP)",
+      "Diagnosed and resolved complex frontend and backend issues in development and production environments",
+      "Proactively evaluated new technologies and suggested architectural and performance improvements",
+    ],
+  },
+  {
     logoPath: "/images/logo1.png",
     title: "Remote Full Stack Developer",
-    company:'Webtors',
+    company: "Webtors",
     date: "May 2023 - Jul 2025",
     responsibilities: [
       "Full-stack feature development using React, Next.js, Node.js, and modern backend tools.",
@@ -194,7 +212,7 @@ const expCards = [
   {
     logoPath: "/images/logo2.png",
     title: "MERN Full Stack Developer",
-    company:'Fiverr',
+    company: "Fiverr",
     date: "Feb 2023 - Present",
     responsibilities: [
       "Successfully completed over 150 projects for 50+ unique clients, maintaining a 100% client retention rate and achieving 5-star rated seller (Level 2) status",

@@ -1,15 +1,15 @@
 import { FaStar } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
 import Marquee from "../components/Marquee";
-import { reviews } from "../constants";
 import TitleHeader from "../components/TitleHeader";
+import { reviews } from "../constants";
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 const ReviewCard = ({ img, name, url, review }) => {
   return (
     <figure
       className={twMerge(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-50/[.1] bg-gradient-to-r bg-indigo/70 to-storm hover:bg-indigo hover-animation"
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-50/[.1] bg-gradient-to-r bg-indigo/70 to-storm hover:bg-indigo hover-animation",
       )}
     >
       <div className="flex flex-row items-center gap-2">
@@ -19,6 +19,8 @@ const ReviewCard = ({ img, name, url, review }) => {
           height="32"
           alt={name}
           src={img}
+          loading="lazy"
+          decoding="async"
         />
         <div className="flex items-center justify-between flex-1">
           <figcaption className="text-sm font-medium text-white">
@@ -35,7 +37,7 @@ const ReviewCard = ({ img, name, url, review }) => {
       </div>
       <blockquote className="mt-2 text-sm">
         {review.slice(0, 40)}...
-        <a href={url}  className="pl-2 text-xs font-semibold hover:scale-110 ">
+        <a href={url} className="pl-2 text-xs font-semibold hover:scale-110 ">
           Verify
         </a>
       </blockquote>
@@ -45,7 +47,10 @@ const ReviewCard = ({ img, name, url, review }) => {
 
 export default function Testimonial() {
   return (
-    <div id="testimonials" className="items-start mt-40 md:mt-35 c-space section-padding">
+    <div
+      id="testimonials"
+      className="items-start mt-40 md:mt-35 c-space section-padding"
+    >
       {/* <h2 className="text-heading">Hear From My Clients</h2> */}
       <TitleHeader
         title="What my Clients Say"

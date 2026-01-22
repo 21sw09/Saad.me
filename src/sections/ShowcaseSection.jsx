@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +16,7 @@ const AppShowcase = () => {
     gsap.fromTo(
       sectionRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 1.5 }
+      { opacity: 1, duration: 1.5 },
     );
 
     // Animations for each app showcase
@@ -38,7 +38,7 @@ const AppShowcase = () => {
             trigger: card,
             start: "top bottom-=100",
           },
-        }
+        },
       );
     });
   }, []);
@@ -49,7 +49,13 @@ const AppShowcase = () => {
         <div className="showcaselayout">
           <div ref={rydeRef} className="first-project-wrapper">
             <div className="image-wrapper">
-              <img src="/images/project-1.png" alt="Ryde App Interface" />
+              <img
+                src="/images/project-1.png"
+                alt="Ryde App Interface"
+                loading="lazy"
+                decoding="async"
+                sizes="(min-width:1280px) 60vw, 90vw"
+              />
             </div>
             <div className="text-content">
               <h2>School Transport Management System</h2>
@@ -63,7 +69,13 @@ const AppShowcase = () => {
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={libraryRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img src="/images/project-3.png" alt="Hardware Tools Website" />
+                <img
+                  src="/images/project-3.png"
+                  alt="Hardware Tools Website"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width:1280px) 40vw, 90vw"
+                />
               </div>
               <h2>
                 <a href="https://www.grinddrill.com">Hardware Tools Website</a>
@@ -75,11 +87,16 @@ const AppShowcase = () => {
                 <img
                   className="rounded-xl border-none outline-none"
                   src="/images/project-2.png"
-                  alt="EasyKrypt Web3 Banking"
+                  alt="Easy Krypt Web3 Banking"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width:1280px) 40vw, 90vw"
                 />
               </div>
               <h2>
-                <a href="https://easy-krypt.vercel.app">Easy Krypt - A Web3 Banking App</a>
+                <a href="https://easy-krypt.vercel.app">
+                  Easy Krypt - A Web3 Banking App
+                </a>
               </h2>
             </div>
           </div>

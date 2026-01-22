@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import React, { useEffect, useRef, useState } from "react";
 
 function MousePosition() {
   const [mousePosition, setMousePosition] = useState({
@@ -41,7 +41,7 @@ function hexToRgb(hex) {
 
 export const Particles = ({
   className = "",
-  quantity = 100,
+  quantity = 80,
   staticity = 50,
   ease = 50,
   size = 0.4,
@@ -51,24 +51,77 @@ export const Particles = ({
   vy = 0,
   ...props
 }) => {
-  console.log('Particles Mounting...')
   const canvasRef = useRef(null);
   const canvasContainerRef = useRef(null);
   const context = useRef(null);
   const circles = useRef([]);
+  const dpr = useRef(1);
+  const lastFrame = useRef(0);
   const mousePosition = MousePosition();
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
-  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const rafID = useRef(null);
   const resizeTimeout = useRef(null);
+  const [actualQuantity, setActualQuantity] = useState(quantity);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (canvasRef.current) {
-      context.current = canvasRef.current.getContext("2d");
+      context.current = canvasRef.current.getContext("2d", {
+        willReadFrequently: true,
+      });
     }
+  }, []);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+    const updateQuantity = () => {
+      if (motionQuery.matches) {
+        setActualQuantity(0);
+        return;
+      }
+      setActualQuantity(
+        mobileQuery.matches ? Math.min(quantity, 30) : quantity,
+      );
+    };
+
+    updateQuantity();
+    motionQuery.addEventListener("change", updateQuantity);
+    mobileQuery.addEventListener("change", updateQuantity);
+
+    return () => {
+      motionQuery.removeEventListener("change", updateQuantity);
+      mobileQuery.removeEventListener("change", updateQuantity);
+    };
+  }, [quantity]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: "200px" },
+    );
+
+    if (canvasContainerRef.current) {
+      observer.observe(canvasContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!context.current || !isVisible || actualQuantity === 0) {
+      if (rafID.current != null) {
+        window.cancelAnimationFrame(rafID.current);
+      }
+      clearContext();
+      circles.current = [];
+      return undefined;
+    }
+
     initCanvas();
-    animate();
+    rafID.current = window.requestAnimationFrame(animate);
 
     const handleResize = () => {
       if (resizeTimeout.current) {
@@ -90,7 +143,7 @@ export const Particles = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [color]);
+  }, [color, actualQuantity, isVisible]);
 
   useEffect(() => {
     onMouseMove();
@@ -121,18 +174,19 @@ export const Particles = ({
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
+      dpr.current = Math.min(window.devicePixelRatio || 1, 1.5);
       canvasSize.current.w = canvasContainerRef.current.offsetWidth;
       canvasSize.current.h = canvasContainerRef.current.offsetHeight;
 
-      canvasRef.current.width = canvasSize.current.w * dpr;
-      canvasRef.current.height = canvasSize.current.h * dpr;
+      canvasRef.current.width = canvasSize.current.w * dpr.current;
+      canvasRef.current.height = canvasSize.current.h * dpr.current;
       canvasRef.current.style.width = `${canvasSize.current.w}px`;
       canvasRef.current.style.height = `${canvasSize.current.h}px`;
-      context.current.scale(dpr, dpr);
+      context.current.setTransform(dpr.current, 0, 0, dpr.current, 0, 0);
 
       // Clear existing particles and create new ones with exact quantity
       circles.current = [];
-      for (let i = 0; i < quantity; i++) {
+      for (let i = 0; i < actualQuantity; i++) {
         const circle = circleParams();
         drawCircle(circle);
       }
@@ -174,7 +228,7 @@ export const Particles = ({
       context.current.arc(x, y, size, 0, 2 * Math.PI);
       context.current.fillStyle = `rgba(${rgb.join(", ")}, ${alpha})`;
       context.current.fill();
-      context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
+      context.current.setTransform(dpr.current, 0, 0, dpr.current, 0, 0);
 
       if (!update) {
         circles.current.push(circle);
@@ -188,14 +242,14 @@ export const Particles = ({
         0,
         0,
         canvasSize.current.w,
-        canvasSize.current.h
+        canvasSize.current.h,
       );
     }
   };
 
   const drawParticles = () => {
     clearContext();
-    const particleCount = quantity;
+    const particleCount = actualQuantity;
     for (let i = 0; i < particleCount; i++) {
       const circle = circleParams();
       drawCircle(circle);
@@ -208,7 +262,12 @@ export const Particles = ({
     return remapped > 0 ? remapped : 0;
   };
 
-  const animate = () => {
+  const animate = (time = 0) => {
+    if (time - lastFrame.current < 33) {
+      rafID.current = window.requestAnimationFrame(animate);
+      return;
+    }
+    lastFrame.current = time;
     clearContext();
     circles.current.forEach((circle, i) => {
       // Handle the alpha value
@@ -220,7 +279,7 @@ export const Particles = ({
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
       const remapClosestEdge = parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
+        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
       );
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;

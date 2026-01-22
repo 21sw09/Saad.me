@@ -6,7 +6,14 @@ const Footer = () => {
       <div className="footer-container">
         <div className="flex flex-col justify-center">
           <a href="/" className="logo">
-            <img src="/logo.png" width={60} />
+            <img
+              src="/logo.png"
+              width={60}
+              height={60}
+              loading="lazy"
+              decoding="async"
+              alt="Saad logo"
+            />
           </a>
         </div>
         <div className="socials">
@@ -16,6 +23,10 @@ const Footer = () => {
                 src={socialImg.imgPath}
                 className="invert !w-18"
                 alt="social icon"
+                loading="lazy"
+                decoding="async"
+                width={40}
+                height={40}
               />
             </a>
           ))}

@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
 
-import TitleHeader from "../components/TitleHeader";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
+import TitleHeader from "../components/TitleHeader";
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -36,7 +36,7 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
       );
 
       // Reset form and stop loading
@@ -52,7 +52,7 @@ const Contact = () => {
     <section className="relative items-center c-space section-spacing">
       <Particles
         className="absolute inset-0 z-10"
-        quantity={100}
+        quantity={60}
         ease={80}
         color={"#ffffff"}
         refresh
