@@ -177,7 +177,7 @@ const techStackIcons = [
 
 const expCards = [
   {
-    logoPath: "/images/rayon.png",
+    logoPath: "/images/rayon.jpg",
     title: "Full Stack AI Engineer",
     company: "Rayon Studios",
     date: "Dec 2025 - Present",
